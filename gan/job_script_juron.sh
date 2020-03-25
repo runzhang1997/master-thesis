@@ -61,15 +61,11 @@ module load numpy/1.16.0
 module load cuda/10.0.130
 # Load your virtual environment #
 source /p/project/joaiml/remote_sensing/run_zhang/.env_juron/bin/activate
-#--validation_data $valid_data --valid
-# Run the program
-#mpirun python train_distribute.py
-#mpirun -bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH \
-#        -x PATH -mca pml ob1 -mca btl ^openib python -u train_tfrecords_new_juron.py
-#
-#       -x LD_LIBRARY_PATH -x PATH -mca pml ob1 -mca btl ^openib 
-#-bind-to none -map-by slot -mca pml ob1 -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x NCCL_IB_CUDA_SUPPORT=1 -x NCCL_IB_DISABLE=0 -x PATH  
+
+#-bind-to none -map-by slot -mca pml ob1 -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x NCCL_IB_CUDA_SUPPORT=1 -x NCCL_IB_DISABLE=0 -x PATH 
+
 #nvprof --analysis-metrics --export-profile gpu_performance
+# print the horovod timeline
 # -x HOROVOD_TIMELINE=timeline.json -x HOROVOD_TIMELINE_MARK_CYCLES=1 
 mpirun -bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x HOROVOD_MPI_THREADS_DISABLE=1 -x PATH -mca pml ob1 \
 	python $network"/"train.py \

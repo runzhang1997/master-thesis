@@ -7,8 +7,6 @@
 #SBATCH --error=ganerr1.%j
 #SBATCH --time=02:00:00
 #SBATCH --gres=gpu:4 --partition=develgpus
-# patch 256 128 192 96 32 intepolation to the same.
-# patch 256 128 192 96 32 intepolation to the same.
 batch_size=128
 epoch=2000
 patch_size=32
